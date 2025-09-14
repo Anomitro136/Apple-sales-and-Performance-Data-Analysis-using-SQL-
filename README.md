@@ -37,6 +37,7 @@
 - Modify or extend the queries to explore additional KPIs, such as revenue potential or review counts.
 
 📑 Example Queries
+
 -- Find the number of apps per genre --
 SELECT prime_genre, COUNT(*) AS number_of_apps
 FROM AppleStore
