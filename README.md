@@ -1,32 +1,69 @@
 # Apple-sales-and-Performance-Data-Analysis-using-SQL-
 📊 Project Overview
-An interactive Excel dashboard analyzing Apple App Store data to uncover trends in categories, ratings, and pricing strategies.
+- SQL project analyzing Apple App Store data to uncover trends in app categories, pricing, ratings, and user engagement
 
 🛠 Tools Used
-Microsoft Excel
-Pivot Tables & Pivot Charts
-Advanced Functions (LOOKUPs, IF, Text functions)
-Data Cleaning & Transformation
+- SQL (SQLite)
+- Apple App Store datasets (AppleStore.csv, appleStore_description1.csv, appleStore_description2.csv)
 
 📂 Files in this Repository
-AppleStore.csv → Main dataset with app details (ratings, prices, categories, etc.)
-appleStore_description1.csv → App description dataset (part 1)
-appleStore_description2.csv → App description dataset (part 2)
+
+- AppleStore.csv → Main dataset with app details (ratings, prices, categories, etc.)
+
+- appleStore_description1.csv → App description dataset (part 1)
+
+- appleStore_description2.csv → App description dataset (part 2)
+
+- AppleStore_Queries.sql → SQL script containing exploratory and analytical queries
 
 📌 Key Insights
-Category Trends: The distribution of apps is concentrated in categories such as Productivity, Lifestyle, and Entertainment, which dominate in volume and usage.
-Pricing Strategy: Free apps attract higher downloads, while paid apps maintain stronger ratings.
-User Ratings: Average rating varies across categories, with some niches showing more user loyalty.
-App Size & Description: Larger apps and detailed descriptions correlate with higher perceived quality.
+
+- The App Store hosts a diverse range of apps, with some categories dominating in volume and user engagement.
+
+- Paid apps generally receive higher ratings compared to free apps.
+
+- Apps with support for multiple languages tend to have better ratings.
+
+- Certain genres consistently show lower average ratings, suggesting quality challenges.
+
+- Top-rated apps differ by category, showing unique success drivers across genres.
 
 🚀 How to Use
-Download the Excel dashboard file.
-Open it in Microsoft Excel (2016 or later recommended).
-Use slicers, pivot tables, and charts to interact with the dashboard and explore app insights.
 
-📸 Dashboard Preview
+- Import the datasets into your SQL environment (SQLite).
 
-![store analysis excel project_anomitro](https://github.com/user-attachments/assets/38011a19-5a25-4b96-a9f3-bae02c4e10fd)
+- Run the queries in AppleStore_Queries.sql step by step to replicate the analysis.
+
+- Modify or extend the queries to explore additional KPIs, such as revenue potential or review counts.
+
+📑 Example Queries
+-- Find the number of apps per genre --
+SELECT prime_genre, COUNT(*) AS number_of_apps
+FROM AppleStore
+GROUP BY prime_genre
+ORDER BY number_of_apps DESC;
+
+-- Compare average ratings of free vs paid apps --
+SELECT CASE 
+         WHEN price = 0 THEN 'Free' 
+         ELSE 'Paid' 
+       END AS app_type,
+       AVG(user_rating) AS avg_rating
+FROM AppleStore
+GROUP BY app_type;
+
+-- Check if apps with more supported languages have higher ratings --
+SELECT CASE 
+         WHEN lang_num < 10 THEN '<10 languages'
+         WHEN lang_num BETWEEN 10 AND 30 THEN '10–30 languages'
+         ELSE '>30 languages'
+       END AS language_bucket,
+       AVG(user_rating) AS avg_rating
+FROM AppleStore
+GROUP BY language_bucket
+ORDER BY avg_rating DESC;
+
+
 
 
 
