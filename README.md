@@ -26,4 +26,8 @@ Use slicers, pivot tables, and charts to interact with the dashboard and explore
 
 📸 Dashboard Preview
 
-(Insert a screenshot of your Excel dashboard here for a professional look)
+![store analysis excel project_anomitro](https://github.com/user-attachments/assets/38011a19-5a25-4b96-a9f3-bae02c4e10fd)
+
+
+
+
